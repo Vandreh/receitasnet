@@ -1,0 +1,2 @@
+aula 4 Modelos
+rails g model Recipe name:string stuff:text calories:integer
