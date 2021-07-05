@@ -1,2 +1,225 @@
 aula 4 Modelos
 rails g model Recipe name:string stuff:text calories:integer
+
+
+aula 2 Criando a aplicação
+rails new receitasnet
+rails -s --help
+
+
+aula 3 Entendendo V e C do MVC
+rake routes
+rails generate controller recipes
+bundle install --without production
+git config --global user.name "Fabricio Mattos"
+git config --global user.email "fabricio@codifike.com.br"
+git init
+git add .
+git status
+git commit -m "Commit inicial"
+heroku login
+heroku keys:add
+heroku apps:create vantecgestiona-vandreh
+git remote -v
+git push heroku master
+heroku run rake db:migrate
+git status
+git commit -m "Inserindo a rota raiz"
+git push heroku master
+heroku open
+
+aula 04
+rails g model
+#rails generate model NAME [fild[:type][:index] field[:type][:index]] [options]
+rails g model CLiente name:string stuff:text DNI:integer
+rake -T
+rake db:migrate
+rake db:migrate:status
+rails c
+	CLiente
+	c = CLiente.new
+	c.name
+	c.name= "Vandreh"
+	c.stuff= "(85)997722582"
+	c.NDI= "001354124"
+	c.save
+
+	c = CLiente.new(name:"Gabriela", stuff:"51 973.195.642", DNI:"41680910")
+	c.save
+
+	CLiente.create(name:"Amanda", stuff:"51 973.195.584", DNI:"00000000")
+
+	CLiente.all
+	CLiente.last
+	CLiente.first
+	CLiente.count
+
+	cliente=CLiente.find(1)
+	cliente.name="Vandreh Esmeraldo"
+	cliente.save
+
+	cliente=CLiente.find(2)
+	cliente.update(name:"Gabriela Neira")
+
+	c=CLiente.find_by(name:"Amanda02")
+	c.destroy
+
+	exit
+
+git add .
+git status
+git commit -m "Criando model CLiente"
+git push heroku master
+heroku run rake db:migrate
+
+
+Aula 05
+git add .
+git status
+git commit -m "Retira hardcoded do controller e ajusta a view"
+git push heroku master
+heroku open
+heroku run console
+Recipe.create(name:"Estrogonofe de carne", stuff:"1kg de carne
+", calories:100)
+
+		Etrgonofe de carne
+		1kg de carne
+		100
+		Filé de frango
+		1/2kg de Frango[24o
+		160
+		Salmão ao forno
+		1kg de salmão, azeite, sal, cebola, tomate...
+		90
+		r=Recipe.find_by(id:2)
+		r.update(stuff:"1/2kg de frango")
+
+Aula 06 - Migracoes
+rails generate migration
+#rails generate migration NAME [fild[:type][:index] field[:type][:index]] [options]
+		#rails g migration AddNewFieldsToCLiente prepare_mode:text cost:decimal
+		rails g migration AddNewFieldsToCLiente direccion:text tipo_de_piel:text
+rails g migration AddNewFieldsToRecipe prepare_mode:text cost:decimal
+
+rake db:migrate:status
+rake db:migrate
+rails c
+reload!
+		r=CLiente.find_by( name: "Vandreh Esmeraldo")
+		r.direccion="Rua Monsenhor Salazar"
+		r.tipo_de_piel="Mixta"
+r=Recipe.find_by(id:1)
+r.prepare_mode="modo de preparo, pega o frango e coloca no forno"
+r.cost=50
+r.save
+
+r=Recipe.find_by(id:2)
+r.update(cost:60, prepare_mode:"Pega o frango e corta em pedacinhos e coloca no fogo")
+		r=CLiente.find_by(name: "Gabriela Neira")
+		r.update(direccion:"Rua Monsenhor Salazar", tipo_de_piel:"Mixta")
+			#<!-- <%= number_to_currency(recipe.cost) %> -->
+git add .
+git status
+git commit -m "Inserindo novos campos na tabela CLiente"
+git push heroku master
+heroku open
+heroku run rake db:migrate
+heroku run console
+		r=CLiente.find_by( name: "Vandreh Esmeraldo")
+		r.update(direccion:"Rua Monsenhor Salazar", tipo_de_piel:"Mixta")
+
+
+Aula 07 - Helpers
+rails c
+helper.pluralize(3, "Cliente", "Clientes")
+helper.pluralize(1, "Cliente", "Clientes")
+rails c
+reload!
+r = CLiente.find_by(name: "Vandreh Esmeraldo")
+r.inativo?
+exit
+git add .
+git status
+git commit -m "Criando Helpers"
+git push heroku master
+herolu open
+heroku run console
+CLiente.create(name: "Anthony Jefferson", DNI: "inativo")
+
+Aula 08 Criando o show
+git add .
+git status
+git commit -m "Criando o show"
+git push heroku master
+heroku open
+
+Aula 09 Criando os links
+rake routes
+app.vantecgestiona_path
+#app.vantecgestiona_index_path
+app.vantecgestiona_url
+#app.vantecgestiona_index_url
+git add .
+git status
+git commit -m "Criando link no index e no show"
+git push heroku master
+heroku open
+
+Aula 10 Um pouco de ruby
+rails c
+"Ola mundo".class
+nome= "Vandreh"
+curso= "Ruby on Rails"
+"Eu #{nome} estou fazendo o curso de #{curso} na codifike"
+"Eu #{nome.upcase} estou fazendo o curso de #{curso.capitalize} na codifike"
+a=123.to_s
+a=123.to_i
+"vandreh".object_id
+:vandreh.object_id
+"string".to_sym
+:symbol.to_s
+frutas = []
+frutas.push('Morango')
+frutas << 2
+frutas.insert(2,"kiwi")
+frutas.pop #elimina o ultimo elemento
+frutas.delete('kiwi')
+frutas.size
+frutas.length
+frutas.first
+frutas.last
+frutas.empty?
+num=[1,2,2,3,4,5,5,5]
+num.uniq
+frutas.each{|f| puts f, ' '}
+frutas.each{|f| puts f}
+frutas.each do |f|
+print f, ' '
+end
+frutas.join
+frutas.join('-')
+cliente={nome:"Vandreh", idade:38}
+print cliente[:nome]
+cliente[:nome]='Gabriela' #alterar o valor
+cliente.each{|k, v| puts "Chave #{k} pertence ao valor #{v}"}
+cliente.each do |k,v|
+puts "Chave #{k} pertence ao valor #{v}"
+end
+cliente.empty?
+cliente.has_key?(:nome)
+cliente.has_value?('vandreh')
+cliente.length
+cliente.delete(:nome)
+(0..5).to_a
+def maior(num)
+	if num > 10
+		puts "maior que 10"
+	else
+		puts "menor que 10"
+	end
+end
+maior(5)
+maior(20)
+
+Aula 11 Formulários de Edição
