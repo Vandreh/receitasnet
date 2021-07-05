@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
 	def index
-		@recipes=['arroz', 'feijao']
+		@recipes = Recipe.all
 	end
 end
