@@ -121,16 +121,18 @@ r.update(cost:60, prepare_mode:"Pega o frango e corta em pedacinhos e coloca no 
 			#<!-- <%= number_to_currency(recipe.cost) %> -->
 git add .
 git status
-git commit -m "Inserindo novos campos na tabela CLiente"
+git commit -m "Inserindo novos campos na tabela Recipe"
 git push heroku master
 heroku open
 heroku run rake db:migrate
 heroku run console
 		r=CLiente.find_by( name: "Vandreh Esmeraldo")
 		r.update(direccion:"Rua Monsenhor Salazar", tipo_de_piel:"Mixta")
-
+r=Recipe.find_by(id:1)
 
 Aula 07 - Helpers
+api.rubyonrails.org pluralize truncate
+
 rails c
 helper.pluralize(3, "Cliente", "Clientes")
 helper.pluralize(1, "Cliente", "Clientes")
