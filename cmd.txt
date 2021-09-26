@@ -158,10 +158,12 @@ heroku open
 
 Aula 09 Criando os links
 rake routes
-app.vantecgestiona_path
+rails c
+app.recipes_path
 #app.vantecgestiona_index_path
-app.vantecgestiona_url
+app.recipes_url
 #app.vantecgestiona_index_url
+app.recipe_path(1)
 git add .
 git status
 git commit -m "Criando link no index e no show"
@@ -170,7 +172,13 @@ heroku open
 
 Aula 10 Um pouco de ruby
 rails c
+2+2
+"Ola mundo"
 "Ola mundo".class
+a = "Ola mundo"
+'I\'m a ruby developer'
+"I'm a ruby developer"
+"Ola" + " Mundo"
 nome= "Vandreh"
 curso= "Ruby on Rails"
 "Eu #{nome} estou fazendo o curso de #{curso} na codifike"
@@ -181,8 +189,9 @@ a=123.to_i
 :vandreh.object_id
 "string".to_sym
 :symbol.to_s
-frutas = []
+frutas = ['maças', 'bananas', 'laranjas']
 frutas.push('Morango')
+frutas[1]
 frutas << 2
 frutas.insert(2,"kiwi")
 frutas.pop #elimina o ultimo elemento
@@ -192,22 +201,28 @@ frutas.length
 frutas.first
 frutas.last
 frutas.empty?
+frutas.include?('morango')
 num=[1,2,2,3,4,5,5,5]
 num.uniq
 frutas.each{|f| puts f, ' '}
 frutas.each{|f| puts f}
-frutas.each do |f|
-print f, ' '
-end
+
+	frutas.each do |f|
+		print f, ' '
+	end
+
 frutas.join
 frutas.join('-')
 cliente={nome:"Vandreh", idade:38}
 print cliente[:nome]
 cliente[:nome]='Gabriela' #alterar o valor
+
 cliente.each{|k, v| puts "Chave #{k} pertence ao valor #{v}"}
-cliente.each do |k,v|
-puts "Chave #{k} pertence ao valor #{v}"
-end
+
+	cliente.each do |k,v|
+		puts "Chave #{k} pertence ao valor #{v}"
+	end
+
 cliente.empty?
 cliente.has_key?(:nome)
 cliente.has_value?('vandreh')
