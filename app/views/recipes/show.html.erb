@@ -13,3 +13,4 @@
 </article>
 <%= link_to "Voltar", recipes_path %>
 <%= link_to "Editar receita", edit_recipe_path(@recipe) %>
+<%= link_to "Deletar receita", recipe_path(@recipe), method: :delete, data:{confirm: "Deseja deletar esta receita?"} %>

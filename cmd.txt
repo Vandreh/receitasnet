@@ -247,4 +247,11 @@ git push heroku master
 heroku open
 
 Aula 12 Formulario de criação
+git add .
+git status
+git commit -m "Criando form de criação"
+git push heroku master
+heroku open
+
+Aula 13 Deletendo receitas
 
