@@ -378,4 +378,11 @@ bundle install --without production
 config environments production.rb
 config.assets.compile = true
 
+git add .
+git status
+git commit -m "Criando novos campos"
+git push heroku master
+heroku run rake db:schema:load db:seed
+heroku open
+
 
