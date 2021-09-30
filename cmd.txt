@@ -267,7 +267,7 @@ git commit -m "Usando partial na view edit e new receita"
 git push heroku master
 heroku open
 
-15 FIltros customizados
+Aula 15 FIltros customizados
 rails c
 Recipe
 Recipe.count
@@ -285,3 +285,97 @@ git status
 git commit -m "Criando filtros customizados"
 git push heroku master
 heroku open
+
+Aula 16 Novas migrações
+rails g migration AddFieldsToRecipe kind:string portion:string duration:datetime poster:string
+rake db:migrate
+#desfazer a ultima migração: rake db:rollback
+rake db:migrate:status
+rake db:migrate
+rake db:migrate:status
+
+#Quem tentar sobrescrever o db hoje precisa usar a variavel DISABLE_DATABASE_ENVIRONMENT_CHECK=1 depois do comando senão o heroku vai avisar que vc ta tentando apagar o banco de dados em produção o que é perigoso caso você esteja usando isso no trabalho. Mas em um projeto para aprender é ok.
+
+rake db:seed
+
+#Recipe Load (0.4ms)  SELECT "recipes".* FROM "recipes" /* loading for inspect */ LIMIT ?  [["LIMIT", 11]]
+=> #<ActiveRecord::Relation [#<Recipe id: 1, name: "Estrogonofe de carne", stuff: "1kg de carne,\r\nverduras", calories: 100, created_at: "2021-07-04 03:27:16.370489000 +0000", updated_at: "2021-09-26 04:31:47.621458000 +0000", prepare_mode: "Pega a carne e coloca no forno", cost: 0.45e2, kind: nil, portion: nil, duration: nil, poster: nil>, #<Recipe id: 2, name: "Filé de frango", stuff: "1/2kg de Frango", calories: 160, created_at: "2021-07-04 03:30:31.455556000 +0000", updated_at: "2021-07-05 04:22:23.548600000 +0000", prepare_mode: "Pega o frango e corta em pedacinhos e coloca no fo...", cost: 0.6e2, kind: nil, portion: nil, duration: nil, poster: nil>, #<Recipe id: 3, name: "Salmão ao forno", stuff: "1 salmão", calories: 90, created_at: "2021-07-04 03:32:23.353872000 +0000", updated_at: "2021-09-30 05:24:55.059847000 +0000", prepare_mode: "coloca o salmao no formono", cost: 0.8e2, kind: nil, portion: nil, duration: nil, poster: nil>, #<Recipe id: 4, name: "Fettuccine", stuff: "Fettuccine is a type of pasta popular in Roman and...", calories: 280, created_at: "2021-09-26 10:08:11.435492000 +0000", updated_at: "2021-09-26 10:08:25.792094000 +0000", prepare_mode: "It is descended from the extremely thin capelli d'...", cost: 0.12e3, kind: nil, portion: nil, duration: nil, poster: nil>, #<Recipe id: 6, name: "Baião de Dois", stuff: "arroz\r\nfeijão\r\nqueijo", calories: 150, created_at: "2021-09-27 04:50:03.784523000 +0000", updated_at: "2021-09-27 04:50:20.301088000 +0000", prepare_mode: "Mistura tudo na panela!", cost: 0.5e1, kind: nil, portion: nil, duration: nil, poster: nil>, #<Recipe id: 7, name: "Estrogonofe de carne", stuff: "1 kg de carne, 3 cebolas, sal e pimenta a gosto, 1...", calories: 110, created_at: "2021-09-30 07:01:55.935317000 +0000", updated_at: "2021-09-30 07:01:55.935317000 +0000", prepare_mode: "Em uma panela, adicione óleo, a carne, os tomates,...", cost: 0.5e2, kind: "Carnes", portion: "5", duration: "2016-05-06 00:40:00.000000000 +0000", poster: "estrogonofe-de-carne.jpg">, #<Recipe id: 8, name: "Filé de frango a parmegiana", stuff: "1/2 kg de file de frango...", calories: 160, created_at: "2021-09-30 07:01:55.960656000 +0000", updated_at: "2021-09-30 07:01:55.960656000 +0000", prepare_mode: "Tempere tudo e coloque na panela que vai ficar gos...", cost: 0.4e2, kind: "Aves", portion: "8", duration: "2016-05-06 00:35:00.000000000 +0000", poster: "file-de-frango-aparmegiana.jpg">]>
+
+seed.rb
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+Recipe.create!([
+	{
+		name: "Estrogonofe de carne",
+		stuff: "1 kg de carne, 3 cebolas, sal e pimenta a gosto, 1 latas de creme de leite, 2 colheres (sopa)...",
+		calories: 110,
+		kind: "Carnes",
+		prepare_mode: "Em uma panela, adicione óleo, a carne, os tomates, o caldo de carne e deixe cozinhar por...",
+		portion: "5",
+		duration: "2016-05-06 00:40:00",
+		cost: 50.00,
+		poster: "estrogonofe-de-carne.jpg"
+	},
+	{
+		name: "Filé de frango a parmegiana",
+		stuff: "1/2 kg de file de frango...",
+		calories: 160,
+		kind: "Aves",
+		prepare_mode: "Tempere tudo e coloque na panela que vai ficar gostoso",
+		portion: "8",
+		duration: "2016-05-06 0:35:00",
+		cost: 40.00,
+		poster: "file-de-frango-aparmegiana.jpg",
+	},
+	{
+		name: "Salmão ao forno", 
+		stuff: "1 salmão", 
+		calories: 90,
+		kind: "Carnes",
+		prepare_mode: "coloca o salmao no formono", 
+		portion: "5",
+		duration: "2016-05-06 00:40:00",
+		cost: 50.00,
+		poster: "estrogonofe-de-carne.jpg"
+	},
+	{
+		name: "Fettuccine", 
+		stuff: "Fettuccine is a type of pasta popular in Roman and...", 
+		calories: 280, 
+		kind: "Pastas",
+		prepare_mode: "It is descended from the extremely thin capelli d'...", 
+		portion: "5",
+		duration: "2016-05-06 00:40:00",
+		cost: 50.00,
+		poster: "estrogonofe-de-carne.jpg"
+	},
+	{
+		name: "Baião de Dois", 
+		stuff: "arroz, feijão e queijo", 
+		calories: 150,
+		kind: "Cearense",
+		prepare_mode: "Mistura tudo na panela!", 
+		portion: "5",
+		duration: "2016-05-06 00:40:00",
+		cost: 50.00,
+		poster: "estrogonofe-de-carne.jpg"
+	},
+])
+
+rake db:reset
+rake db:schema:load db:seed
+
+Arquivo Gemfile
+gem 'rails_12factor'
+
+bundle install --without production
+
+config environments production.rb
+config.assets.compile = true
+
+
