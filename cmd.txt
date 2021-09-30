@@ -254,4 +254,34 @@ git push heroku master
 heroku open
 
 Aula 13 Deletendo receitas
+git add .
+git status
+git commit -m "Deletando receita"
+git push heroku master
+heroku open
 
+Aula 14 Partials
+git add .
+git status
+git commit -m "Usando partial na view edit e new receita"
+git push heroku master
+heroku open
+
+15 FIltros customizados
+rails c
+Recipe
+Recipe.count
+Recipe.all
+Recipe.order('created_at asc')
+Recipe.order('created_at desc')
+Recipe.find(1)
+Recipe.where('calories < 100')
+Recipe.where('calories < ?', 100)
+Recipe .where('created_at < ?', Time.now)
+Recipe.where('calories > 100').order('created_at desc')
+
+git add .
+git status
+git commit -m "Criando filtros customizados"
+git push heroku master
+heroku open

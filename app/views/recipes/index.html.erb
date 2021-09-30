@@ -6,7 +6,9 @@
 			<!--<h2><%= link_to recipe.name, recipe %></h2> -->
 			<h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
 		</header>
+		<h3>Ingredientes:</h3>
 		<p><%= truncate(recipe.stuff, length:15, separator:' ') %></p>
+		<h3>Calorias:</h3>
 		<p><%= formata_caloria(recipe) %></p>
 		
 		<table>
