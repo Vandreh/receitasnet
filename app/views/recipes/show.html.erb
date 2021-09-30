@@ -12,8 +12,6 @@
 	<p><%= @recipe.calories %></p>
 	<h3>Modo de Preparo</h3>
 	<p><%= @recipe.prepare_mode %></p>
-	<h3>Tempo de Preparo</h3>
-	<p><%= @recipe.duration.to_formatted_s(:time) %></p>
 	<h3>Porções:</h3>
 	<p><%= pluralize(@recipe.portion, 'porção', 'porções') %></p>	
 	<h3>Custo</h3>
