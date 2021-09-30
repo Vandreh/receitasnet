@@ -1,11 +1,10 @@
 <article>
 	<header>
 		<h1><%= @recipe.name %></h1>
-		<%= imagem(@recipe) %>
+		
 	</header>
 
 	<h2>Tipo</h2>
-	<p><%= @recipe.kind %></p>
 
 	<h2>Ingredientes</h2>
 	<p><%= @recipe.stuff %></p>
@@ -14,9 +13,7 @@
 	<h3>Modo de Preparo</h3>
 	<p><%= @recipe.prepare_mode %></p>
 	<h3>Tempo de Preparo</h3>
-	<p><%= @recipe.duration.to_formatted_s(:time) %></p>
 	<h3>Porções:</h3>
-	<p><%= pluralize(@recipe.portion, 'porção', 'porções') %></p>	
 	<h3>Custo</h3>
 	<p><%= @recipe.cost %></p>
 </article>
