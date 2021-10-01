@@ -149,14 +149,14 @@ herolu open
 heroku run console
 CLiente.create(name: "Anthony Jefferson", DNI: "inativo")
 
-Aula 08 Criando o show
+Aula 08 - Criando o show
 git add .
 git status
 git commit -m "Criando o show"
 git push heroku master
 heroku open
 
-Aula 09 Criando os links
+Aula 09 - Criando os links
 rake routes
 rails c
 app.recipes_path
@@ -170,7 +170,7 @@ git commit -m "Criando link no index e no show"
 git push heroku master
 heroku open
 
-Aula 10 Um pouco de ruby
+Aula 10 - Um pouco de ruby
 rails c
 2+2
 "Ola mundo"
@@ -239,35 +239,35 @@ end
 maior(5)
 maior(20)
 
-Aula 11 Formulários de Edição
+Aula 11 - Formulários de Edição
 git add .
 git status
 git commit -m "Criando form de edição"
 git push heroku master
 heroku open
 
-Aula 12 Formulario de criação
+Aula 12 - Formulario de criação
 git add .
 git status
 git commit -m "Criando form de criação"
 git push heroku master
 heroku open
 
-Aula 13 Deletendo receitas
+Aula 13 - Deletendo receitas
 git add .
 git status
 git commit -m "Deletando receita"
 git push heroku master
 heroku open
 
-Aula 14 Partials
+Aula 14 - Partials
 git add .
 git status
 git commit -m "Usando partial na view edit e new receita"
 git push heroku master
 heroku open
 
-Aula 15 FIltros customizados
+Aula 15 - FIltros customizados
 rails c
 Recipe
 Recipe.count
@@ -286,7 +286,7 @@ git commit -m "Criando filtros customizados"
 git push heroku master
 heroku open
 
-Aula 16 Novas migrações
+Aula 16 - Novas migrações
 rails g migration AddFieldsToRecipe kind:string portion:string duration:datetime poster:string
 rake db:migrate
 #desfazer a ultima migração: rake db:rollback
@@ -385,4 +385,8 @@ git push heroku master
 heroku run rake db:schema:load db:seed
 heroku open
 
+Aula 17 - Um pouco de beleza com Bootstrap
+"bundle install --without production" substituit por "bundle config set without 'production'"
+
+problema para importar "compass" no arquivo app/assets/stylesheets/compass_receitasnet.css.scss
 
