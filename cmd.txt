@@ -402,3 +402,8 @@ Aula 18 - Customizando a aplicação
  git commit -m "Melhorando o layout da aplicação"
  git push heroku master
  heroku open
+
+ Aula 19 - Embelezando os formulários
+ git add .
+ git status
+ git commit -m "Formatando forms e botões"
