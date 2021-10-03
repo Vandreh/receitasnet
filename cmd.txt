@@ -390,3 +390,15 @@ Aula 17 - Um pouco de beleza com Bootstrap
 
 problema para importar "compass" no arquivo app/assets/stylesheets/compass_receitasnet.css.scss
 
+
+
+
+Aula 18 - Customizando a aplicação
+ app/javascript/packs/aplication.js
+ //= require bootstrap-sprockets nao foi nescessario
+
+ git add .
+ git status
+ git commit -m "Melhorando o layout da aplicação"
+ git push heroku master
+ heroku open
