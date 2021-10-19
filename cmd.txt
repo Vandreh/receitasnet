@@ -407,3 +407,19 @@ Aula 18 - Customizando a aplicação
  git add .
  git status
  git commit -m "Formatando forms e botões"
+
+
+Aula 20 - Validações
+rails c
+r = Recipe.new
+r.valid_
+r.errors
+r.errors.full_messages
+r.errors.full_messages.to_sentence
+r.errors[:name]
+
+git add .
+git status
+git commit -m "Criando validadores"
+git push heroku master
+heroku open
