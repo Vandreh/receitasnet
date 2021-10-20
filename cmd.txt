@@ -423,3 +423,20 @@ git status
 git commit -m "Criando validadores"
 git push heroku master
 heroku open
+
+Aula 21 - Falando outras linguas (adicionando outros idiomas)
+https://github.com/svenfuchs/rails-I18n/tree/master/rails/locale
+git add . 
+git status
+git commit -m "Falando outras linguas"
+git push heroku master
+heroku open
+
+Aula 22 - Flash Messages
+git checkout -b flash
+git add .
+git status
+git commit -m "Criando flash messages"
+git checkout master
+git merge flash
+git push heroku master
