@@ -439,4 +439,26 @@ git status
 git commit -m "Criando flash messages"
 git checkout master
 git merge flash
+git branch -d flash
 git push heroku master
+heroku open
+
+Aula 23 - Relacionamento entre tabelas
+rails g resource comment name:string rating:integer comment:text recipe:references
+rake db:migrate
+
+rails c
+Recipe
+receita=Recipe.first
+receita.comments
+comentario=Comment.new(name:'Jose Silva', rating:8, comment:'Boa receita')
+comentario.recipe_id
+comentario.recipe = receita
+#comentario.recipe_id = receita.id
+comentario.recipe_id
+comentario.save
+receita.comments
+receita.reload
+receita.comments
+comentario = receita.comments.new(name:'Maria Jose', rating:9, comment:'Muito bom')
+comentario.save
