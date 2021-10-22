@@ -469,3 +469,12 @@ git commit -m "Criando novo modelo e seus relacionamentos" (Criando comentarios 
 git push heroku master
 heroku run rake db:migrate
 heroku open
+
+Aula 24 - Relacionando recursos
+git add .
+git status
+git commit -m "Exibindo comentarios"
+git push heroku master
+heroku open
+heroku run rake db:schema:load db:seed
+heroku open
