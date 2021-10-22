@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
+  
 	root 'recipes#index'
 	# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 	#get "recipes" => "recipes#index"
-	resources :recipes
+	resources :recipes do
+		resources :comments
+	end
 end

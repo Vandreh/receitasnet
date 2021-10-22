@@ -462,3 +462,10 @@ receita.reload
 receita.comments
 comentario = receita.comments.new(name:'Maria Jose', rating:9, comment:'Muito bom')
 comentario.save
+
+git add .
+git status
+git commit -m "Criando novo modelo e seus relacionamentos" (Criando comentarios relacionados a tabela de receitas)
+git push heroku master
+heroku run rake db:migrate
+heroku open
