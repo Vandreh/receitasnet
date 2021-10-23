@@ -478,3 +478,10 @@ git push heroku master
 heroku open
 heroku run rake db:schema:load db:seed
 heroku open
+
+Aula 25 - Formulário de Comentários
+git add .
+git status
+git commit -m "Criando formulario de comentários"
+git push heroku master
+heroku open
